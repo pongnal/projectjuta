@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Theme } from "@radix-ui/themes";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,9 +13,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        {children}
+        <Theme
+          accentColor="jade"
+          grayColor="mauve"
+          panelBackground="solid"
+          scaling="110%"
+        >
+          {children}
+        </Theme>
       </body>
     </html>
   );
