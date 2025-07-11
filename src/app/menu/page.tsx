@@ -2,6 +2,8 @@
 import { Card, Flex, Text, Button } from "@radix-ui/themes";
 import { menuItems } from "./menuData";
 import { useEffect, useState, useRef } from "react";
+import ModalMenu from "./modalMenu";
+import { Dialog } from "@radix-ui/themes";
 
 const categories = [
   { key: "fastFood", label: "Fast Food" },
@@ -15,6 +17,8 @@ export default function Menu() {
   const [columns, setColumns] = useState(3);
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const TAB_BAR_HEIGHT = 64;
+  const [open, setOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<any>(null);
 
   useEffect(() => {
     function handleResize() {
@@ -79,7 +83,7 @@ export default function Menu() {
                     <Text size="2" color="gray" mb="3">{item.desc}</Text>
                     <Flex direction="row" align="center" justify="between" className="mt-1">
                       <Text size="4" weight="bold">RM{item.price}</Text>
-                      <Button variant="soft" size="3" radius="full">+</Button>
+                      <Button variant="soft" size="3" radius="full" onClick={() => { setSelectedItem(item); setOpen(true); }}>+</Button>
                     </Flex>
                   </Flex>
                 </Flex>
@@ -88,6 +92,13 @@ export default function Menu() {
           </div>
         </div>
       ))}
+      {/* Render Dialog at the end, outside the map */}
+      <Dialog.Root open={open} onOpenChange={setOpen}>
+        <Dialog.Title>Modal Menu</Dialog.Title>
+        <Dialog.Content style={{ maxWidth: 480, width: "100%" }}>
+          {selectedItem && <ModalMenu item={selectedItem} />}
+        </Dialog.Content>
+      </Dialog.Root>
     </Flex>
   );
 }

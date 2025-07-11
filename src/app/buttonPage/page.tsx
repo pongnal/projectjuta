@@ -1,3 +1,4 @@
+"use client";
 import {
   Flex,
   Text,
@@ -5,15 +6,25 @@ import {
   AlertDialog,
   Spinner,
   Callout,
+  Dialog,
 } from "@radix-ui/themes";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
+import React from "react";
 
 export default function ButtonPage() {
+  const [open, setOpen] = React.useState(false);
+
   return (
     <>
       <Flex direction="column" gap="2" mt="9" align="center" justify="center">
-        <Text size="3">Normal Button</Text>
-        <Button style={{ width: "auto" }}>Let's go</Button>
+        <Dialog.Root open={open} onOpenChange={setOpen}>
+          <Dialog.Title>Modal Menu</Dialog.Title>
+          <Dialog.Trigger>
+            <Button style={{ width: "auto" }} onClick={() => setOpen(true)}>Let's go</Button>
+          </Dialog.Trigger>
+          <Dialog.Content style={{ maxWidth: 480, width: "100%" }}>
+          </Dialog.Content>
+        </Dialog.Root>
       </Flex>
 
       <Flex direction="column" gap="2" mt="9" align="center" justify="center">

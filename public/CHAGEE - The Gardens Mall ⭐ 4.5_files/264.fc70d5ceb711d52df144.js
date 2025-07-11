@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[264],{"3U6h":function(e,n,t){"use strict";t.r(n);var a=t("q1tI"),i=t.n(a),o=t("PgRs"),c=t.n(o);n.default=i.a.memo(function(){return i.a.createElement(c.a,null,i.a.createElement("meta",{name:"viewport",content:["width=device-width","initial-scale=1","maximum-scale=1","shrink-to-fit=no"].join(", ")}))})}}]);
