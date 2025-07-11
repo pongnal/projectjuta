@@ -1,8 +1,8 @@
 "use client";
 import { Card, Flex, Text, Button } from "@radix-ui/themes";
-import { menuItems } from "./menuData";
+import { menuItems } from "./components/menuData";
 import { useEffect, useState, useRef } from "react";
-import ModalMenu from "./modalMenu";
+import ModalMenu from "./components/modalMenu";
 import { Dialog } from "@radix-ui/themes";
 
 const categories = [
@@ -96,7 +96,7 @@ export default function Menu() {
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Title>Modal Menu</Dialog.Title>
         <Dialog.Content style={{ maxWidth: 480, width: "100%" }}>
-          {selectedItem && <ModalMenu item={selectedItem} />}
+          {selectedItem && <ModalMenu item={selectedItem} onClose={() => setOpen(false)} />}
         </Dialog.Content>
       </Dialog.Root>
     </Flex>
