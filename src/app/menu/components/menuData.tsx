@@ -99,6 +99,15 @@ export const menuItems = [
           { value: "large", label: "Large", extra: "+ RM1.00" },
         ],
       },
+      {
+        title: "Choice of Cup",
+        type: "radio",
+        required: true,
+        options: [
+          { value: "normal", label: "Normal" },
+          { value: "specialCup", label: "Special Cup Alabama", extra: "+ RM5.00" },
+        ],
+      },
     ],
     addons: [
       {
