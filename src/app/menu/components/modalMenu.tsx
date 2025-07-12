@@ -64,15 +64,14 @@ export default function ModalMenu({ item, onClose }: { item: any, onClose?: () =
 
   // Calculate extra price for size
   let extra = 0;
-  const sizeIndex = item.customizations?.findIndex((c: any) => c.title.toLowerCase().includes("size"));
-  if (sizeIndex !== undefined && sizeIndex !== -1) {
-    const sizeVal = customValues[sizeIndex];
-    const sizeOpt = item.customizations[sizeIndex].options.find((o: any) => o.value === sizeVal);
-    if (sizeOpt && sizeOpt.extra) {
-      const match = sizeOpt.extra.match(/([\d.]+)/);
-      if (match) extra = parseFloat(match[1]);
+  (item.customizations || []).forEach((custom: any, idx: number) => {
+    const val = customValues[idx];
+    const opt = custom.options.find((o: any) => o.value === val);
+    if (opt && opt.extra) {
+      const match = opt.extra.match(/([\d.]+)/);
+      if (match) extra += parseFloat(match[1]);
     }
-  }
+  });
 
   // Calculate add-on price
   let addonPrice = 0;

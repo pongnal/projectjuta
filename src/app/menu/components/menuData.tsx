@@ -87,7 +87,7 @@ export const menuItems = [
     img: "/drink1.png",
     title: "Root Beer",
     desc: "From west to east, HelenaMa is a must-try for all macaron lovers",
-    price: "10.00",
+    price: "11.90",
     category: "drink",
     customizations: [
       {
@@ -96,16 +96,7 @@ export const menuItems = [
         required: true,
         options: [
           { value: "regular", label: "Regular" },
-          { value: "large", label: "Large", extra: "+ RM1.00" },
-        ],
-      },
-      {
-        title: "Choice of Cup",
-        type: "radio",
-        required: true,
-        options: [
-          { value: "normal", label: "Normal" },
-          { value: "specialCup", label: "Special Cup Alabama", extra: "+ RM5.00" },
+          { value: "large", label: "Large", extra: "+ RM1.80" },
         ],
       },
     ],
