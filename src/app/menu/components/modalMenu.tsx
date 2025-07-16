@@ -2,6 +2,7 @@ import { Card, Flex, Text, RadioGroup, TextField, Button, Separator } from "@rad
 import { Checkbox } from "@radix-ui/themes";
 import { useState } from "react";
 import React from "react";
+import { colors } from "@/app/components/theme/color";
 
 function ChoiceCard({
   title,
@@ -15,9 +16,9 @@ function ChoiceCard({
   options: { value: string, label: string, extra?: string }[]
 }) {
   const isComplete = !!value;
-  const cardBg = isComplete ? 'bg-[var(--jade-3)] border-[var(--jade-9)]' : 'bg-[var(--red-3)] border-[var(--red-9)]';
+  const cardBg = isComplete ? `bg-[${colors.jade.soft}] border-[${colors.jade.primary}]` : `bg-[${colors.red.soft}] border-[${colors.red.primary}]`;
   const badgeText = isComplete ? 'Complete' : 'Required';
-  const badgeClass = isComplete ? 'bg-[var(--jade-9)] text-white' : 'bg-[var(--red-9)] text-white';
+  const badgeClass = isComplete ? `bg-[${colors.jade.primary}] text-white` : `bg-[${colors.red.primary}] text-white`;
   return (
     //UI for customization card
     <Card className={`p-4 border-2 ${cardBg}`}>
@@ -60,7 +61,7 @@ export default function ModalMenu({ item, onClose }: { item: any, onClose?: () =
   const [instructions, setInstructions] = useState("");
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const price = parseFloat(item.price);
-  const optionalBadgeClass = 'bg-[var(--mauve-3)] text-[var(--mauve-11)]';
+  const optionalBadgeClass = `bg-[${colors.mauve.soft}] text-[${colors.mauve.text}]`;
 
   // Calculate extra price for size
   let extra = 0;
@@ -172,8 +173,11 @@ export default function ModalMenu({ item, onClose }: { item: any, onClose?: () =
         <Button variant="soft" onClick={() => setQty(q => q + 1)}>+</Button>
       </Flex>
       <Button
-        style={{ width: "100%" }}
-        className={allRequiredSelected ? "bg-[var(--jade-9)] hover:bg-[var(--jade-10)] text-white" : ""}
+        style={{ 
+          width: "100%",
+          backgroundColor: allRequiredSelected ? colors.jade.primary : undefined,
+          color: allRequiredSelected ? "white" : undefined
+        }}
         disabled={!allRequiredSelected}
       >
         Add to Basket - RM{(total * qty).toFixed(2)}

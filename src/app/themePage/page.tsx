@@ -11,7 +11,7 @@ import {
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import React from "react";
 
-export default function ButtonPage() {
+export default function Themepage() {
   const [open, setOpen] = React.useState(false);
 
   return (
